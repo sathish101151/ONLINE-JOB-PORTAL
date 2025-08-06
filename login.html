@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        html{
+            font-size: 62.5%;
+        }
+    </style>
+
+    <!-- Header section starts -->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        <section class="flex">
+            <a href="home.html" class="logo"><i class="fas fa-briefcase"></i>JobHunt.</a>
+            
+            <nav class="navbar">
+                <a href="home.html">home</a>
+                <a href="about.html">about us</a>
+                <a href="jobs.html">all job</a>
+                <a href="contact.html">contact</a>
+                <a href="login.html">account</a> 
+            </nav>
+            <a href="#" class="btn" style="margin-top:0;">post job</a>
+        </section>
+    </header>
+    <!-- Header section end -->
+
+    <!-- Account section starts -->
+   <div class="account-form-container">
+    <section class="account-form">
+        <form id="loginForm">
+            <h3>welcome back</h3>
+            <input type="email" required id="email" name="email" maxlength="50" placeholder="enter your email" class="input">
+            <input type="password" required id="pass" name="pass" maxlength="20" placeholder="enter your password" class="input">
+            <p>don't have an account?<a href="register.html">register now</a></p>
+            <input type="submit" value="login now" class="btn">
+        </form>
+    </section>
+   </div>
+     <!-- Account section ends -->
+
+    <!-- JavaScript to handle login -->
+    <script>
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+
+            // Retrieve user data from localStorage
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            // Check if the user exists and if the password matches
+            if (user && user.email === email && user.password === pass) {
+                alert('Login successful! Welcome back.');
+                // Redirect to home page or dashboard after login
+                window.location.href = 'home.html';
+            } else {
+                alert('Invalid email or password.');
+            }
+        });
+    </script>
+
+
+<!--footer section starts-->
+<footer class="footer">
+
+    <section class="grid">
+        <div clsss="box">
+            <h3>quick links</h3>
+            <a href="home.html"><i class="fas fa-angle-right"></i>home</a>
+            <a href="about.html"><i class="fas fa-angle-right"></i>about</a>
+            <a href="jobs.html"><i class="fas fa-angle-right"></i>all jobs</a>
+            <a href="contact.html"><i class="fas fa-angle-right"></i>contact</a>
+            <a href="#"><i class="fas fa-angle-right"></i>filter search</a>
+        </div>
+  
+        <div clsss="box">
+            <h3>extra links</h3>
+  
+            <a href="#"><i class="fas fa-angle-right"></i>account</a>
+            <a href="login.html"><i class="fas fa-angle-right"></i>login</a>
+            <a href="register.html"><i class="fas fa-angle-right"></i>register</a>
+            <a href="#"><i class="fas fa-angle-right"></i>post job</a>
+            <a href="#"><i class="fas fa-angle-right"></i>dashboard</a>
+        </div>
+  
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"><i class="fab fa-facebook"></i>facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i>twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
+            <a href="#"><i class="fab fa-youtube"></i>youtube</a>
+        </div>
+    </section>
+    <div class="credit">&copy;copyright @ 2023 by <span>mr.web designer</span>| all right reserved!|</div>
+  </footer>
+  
+  
+  
+  
+  <script src="script.js"></script>
+  </body>
+  
+  </html>
+  
+

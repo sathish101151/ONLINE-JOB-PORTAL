@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!--cutom css file link-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <style>
+      html {
+          font-size: 62.5%;
+      }
+  </style>
+
+
+    <!--header section starts-->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        <section class="flex">
+            <a href="home.html" class="logo"><i class="fas fa-briefcase"></i>JobHunt.</a>
+
+            <nav class="navbar">
+                <a href="home.html">home</a>
+                <a href="about.html">about us</a>
+                <a href="jobs.html">all job</a>
+                <a href="contact.html">contact</a>
+                <a href="login.html">account</a>
+                
+            </nav>
+            <a href="post_job.html" class="btn" style="margin-top:0;">post job</a>
+        </section>
+    </header>
+
+    <!--header section end-->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+      color: #333;
+      font-size: 1.7rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    .job-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .job-card {
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    .job-card h3 {
+      color: #0077cc;
+      margin-bottom: 10px;
+    }
+
+    .job-card p {
+      margin: 4px 0;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Post a Job</h1>
+
+  <form id="jobForm">
+    <label>Job Title *</label>
+    <input type="text" id="jobTitle" required>
+
+    <label>Job Location *</label>
+    <input type="text" id="jobLocation" required>
+
+    <label>Number of Openings *</label>
+    <input type="number" id="openings" required>
+
+    <label>Candidate Requirements *</label>
+    <textarea id="requirements" required></textarea>
+
+    <label>Total Experience of Candidate (in years) *</label>
+    <input type="number" id="experience" required>
+
+    <label>Do you offer bonus in addition to monthly salary?</label>
+    <select id="bonus">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <label>Job Info / Job Description *</label>
+    <textarea id="jobInfo" required></textarea>
+
+    <label>Skills *</label>
+    <input type="text" id="skills" placeholder="E.g. JavaScript, HTML, CSS" required>
+
+    <label>Timings *</label>
+    <input type="text" id="timings" placeholder="E.g. 9 AM - 6 PM" required>
+
+    <label>About Your Company *</label>
+    <textarea id="companyInfo" required></textarea>
+
+    <button type="submit">Submit Job</button>
+  </form>
+
+  <div class="job-list" id="jobList">
+    <!-- Submitted jobs will show here -->
+  </div>
+
+  <script>
+    const jobForm = document.getElementById('jobForm');
+    const jobList = document.getElementById('jobList');
+
+    jobForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get values
+      const job = {
+        title: document.getElementById('jobTitle').value,
+        location: document.getElementById('jobLocation').value,
+        openings: document.getElementById('openings').value,
+        requirements: document.getElementById('requirements').value,
+        experience: document.getElementById('experience').value,
+        bonus: document.getElementById('bonus').value,
+        info: document.getElementById('jobInfo').value,
+        skills: document.getElementById('skills').value,
+        timings: document.getElementById('timings').value,
+        company: document.getElementById('companyInfo').value
+      };
+
+      // Create card
+      const jobCard = document.createElement('div');
+      jobCard.className = 'job-card';
+      jobCard.innerHTML = `
+        <h3>${job.title}</h3>
+        <p><strong>Location:</strong> ${job.location}</p>
+        <p><strong>Openings:</strong> ${job.openings}</p>
+        <p><strong>Experience Required:</strong> ${job.experience} years</p>
+        <p><strong>Bonus:</strong> ${job.bonus}</p>
+        <p><strong>Requirements:</strong> ${job.requirements}</p>
+        <p><strong>Job Info:</strong> ${job.info}</p>
+        <p><strong>Skills:</strong> ${job.skills}</p>
+        <p><strong>Timings:</strong> ${job.timings}</p>
+        <p><strong>Company:</strong> ${job.company}</p>
+      `;
+
+      jobList.prepend(jobCard); // Add newest job on top
+      jobForm.reset();
+    });
+  </script>
+
+
+
+ <!--footer section starts-->
+ <footer class="footer">
+
+  <section class="grid">
+      <div clsss="box">
+          <h3>quick links</h3>
+          <a href="home.html"><i class="fas fa-angle-right"></i>home</a>
+          <a href="about.html"><i class="fas fa-angle-right"></i>about</a>
+          <a href="jobs.html"><i class="fas fa-angle-right"></i>all jobs</a>
+          <a href="contact.html"><i class="fas fa-angle-right"></i>contact</a>
+          <a href="#"><i class="fas fa-angle-right"></i>filter search</a>
+      </div>
+
+      <div clsss="box">
+          <h3>extra links</h3>
+
+          <a href="#"><i class="fas fa-angle-right"></i>account</a>
+          <a href="login.html"><i class="fas fa-angle-right"></i>login</a>
+          <a href="register.html"><i class="fas fa-angle-right"></i>register</a>
+          <a href="#"><i class="fas fa-angle-right"></i>post job</a>
+          <a href="#"><i class="fas fa-angle-right"></i>dashboard</a>
+      </div>
+
+      <div class="box">
+          <h3>follow us</h3>
+          <a href="#"><i class="fab fa-facebook"></i>facebook</a>
+          <a href="#"><i class="fab fa-twitter"></i>twitter</a>
+          <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+          <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
+          <a href="#"><i class="fab fa-youtube"></i>youtube</a>
+      </div>
+  </section>
+  <div class="credit">&copy;copyright @ 2023 by <span>mr.web designer</span>| all right reserved!|</div>
+</footer>
+
+
+
+
+<script src="script.js"></script>
+</body>
+
+</html>
+
+

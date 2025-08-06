@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    </style>
+
+    <!-- Header section starts -->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        <section class="flex">
+            <a href="home.html" class="logo"><i class="fas fa-briefcase"></i>JobHunt.</a>
+            
+            <nav class="navbar">
+                <a href="home.html">home</a>
+                <a href="about.html">about us</a>
+                <a href="jobs.html">all job</a>
+                <a href="contact.html">contact</a>
+                <a href="login.html">account</a> 
+            </nav>
+            <a href="#" class="btn" style="margin-top:0;">post job</a>
+        </section>
+    </header>
+    <!-- Header section end -->
+
+    <!-- Account section starts -->
+    <div class="account-form-container">
+        <section class="account-form">
+            <form id="registerForm">
+                <h3>create new account</h3>
+                <input type="text" required id="name" name="name" maxlength="20" placeholder="enter your name" class="input">
+                <input type="email" required id="email" name="email" maxlength="50" placeholder="enter your email" class="input">
+                <input type="password" required id="pass" name="pass" maxlength="20" placeholder="enter your password" class="input">
+                <input type="password" required id="c_pass" name="c_pass" maxlength="20" placeholder="confirm your password" class="input">
+                <p>already have an account?<a href="login.html">login now</a></p>
+                <input type="submit" value="register now" class="btn">
+            </form>
+        </section>
+    </div>
+    <!-- Account section ends -->
+
+    <!-- JavaScript to handle form submission -->
+    <script>
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+            const c_pass = document.getElementById('c_pass').value;
+
+            // Simple validation
+            if (pass !== c_pass) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Save user data to localStorage
+            const user = { name, email, password: pass };
+
+            // Store the data in localStorage (optional: you can also store in sessionStorage)
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Show a success message
+            alert('Registration successful! Your data has been saved locally.');
+            
+            // Optionally, redirect to the login page after successful registration
+            window.location.href = 'login.html';
+        });
+    </script>
+
+</body>
+</html>
